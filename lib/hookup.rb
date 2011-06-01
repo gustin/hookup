@@ -40,7 +40,7 @@ class Hookup
       puts "Already hooked up!"
     else
       File.open(hook, "a") do |f|
-        f.puts %(be hookup post-checkout "$@")
+        f.puts %(bundle exec hookup post-checkout "$@")
       end
       puts "Hooked up!"
     end
@@ -68,7 +68,7 @@ class Hookup
         %x{bundle check}
         unless $?.success?
           puts "Bundling..."
-          system("bi | grep -v '^Using ' | grep -v ' is complete'")
+          system("bundle install --path vendor | grep -v '^Using ' | grep -v ' is complete'")
         end
       ensure
         ENV['GIT_DIR'] = git_dir
