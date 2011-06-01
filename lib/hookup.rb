@@ -40,7 +40,7 @@ class Hookup
       puts "Already hooked up!"
     else
       File.open(hook, "a") do |f|
-        f.puts %(hookup post-checkout "$@")
+        f.puts %(be hookup post-checkout "$@")
       end
       puts "Hooked up!"
     end
